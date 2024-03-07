@@ -36,6 +36,10 @@
     font-weight: 400;
 }
 
+.Label-disabled {
+    color: #504f54;
+}
+
 .CardTitle {
     font-family: Arial, serif;
     font-size: 14px;

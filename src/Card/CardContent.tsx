@@ -15,9 +15,9 @@ export default function () {
         <Flex direction="row" align="center" gap={"2"}>
             <Label pl="25px">Variable : </Label>
             <Checkbox/>
-            <Label>Min : </Label>
+            <Label disabled>Min : </Label>
             <NumberInput value="0" disabled/>
-            <Label>Max : </Label>
+            <Label disabled>Max : </Label>
             <NumberInput value="2" disabled/>
         </Flex>
         <Flex direction="row" align="center" justify="end" className="Footer">
