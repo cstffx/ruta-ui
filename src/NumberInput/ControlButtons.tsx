@@ -12,8 +12,8 @@ interface ButtonProps {
 function Button(props: ButtonProps) {
     const fill = props.disabled ? "#67666a" : "#e6e6e6";
     const rest = {
-        w: 14,
-        h: 10,
+        w: 15,
+        h: 15,
         fill
     };
     return <Flex className={cls("Control-button", {
