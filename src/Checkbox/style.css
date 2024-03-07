@@ -1,0 +1,16 @@
+.Checkbox {
+    background-color: #47484E;
+    border: none;
+    box-shadow: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+}
+
+.rt-CheckboxButton[data-state='checked'] {
+    background-color: #47484E;
+}
+
+.rt-CheckboxButton[data-state='unchecked'] {
+    box-shadow: none;
+}
