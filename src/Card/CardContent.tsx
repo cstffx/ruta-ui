@@ -1,6 +1,6 @@
 import {Flex} from "@radix-ui/themes";
 import React from "react";
-import Label from "./Label";
+import Label from "../Label/Label";
 import NumberInput from "../NumberInput/NumberInput";
 import Checkbox from "../Checkbox/Checkbox";
 import Button from "../Button/Button";

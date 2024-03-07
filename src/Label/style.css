@@ -1,0 +1,11 @@
+.Label {
+    font-family: Arial, serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.50);
+    text-align: right;
+    font-weight: 400;
+}
+
+.Label-disabled {
+    color: #504f54;
+}
