@@ -13,4 +13,5 @@
 
 .rt-CheckboxButton[data-state='unchecked'] {
     box-shadow: none;
+    background-color: #47484E;
 }
