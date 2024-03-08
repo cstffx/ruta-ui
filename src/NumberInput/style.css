@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.NumberInput-disable:hover .Controls{
+    display: none;
+}
+
 .NumberInput, .rt-TextFieldInput {
     background: #47484E;
 }
