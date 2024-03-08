@@ -6,7 +6,7 @@ import CaretDown from "./control/CaretDown";
 
 interface NumberInputProps {
     value?: string;
-    defaultValue?: string | number;
+    defaultValue?: any;
     disabled?: boolean;
     ml?: string;
 }
