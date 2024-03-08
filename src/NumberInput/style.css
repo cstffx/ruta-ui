@@ -1,3 +1,7 @@
+.NumberInput:hover .Controls{
+    display: flex;
+}
+
 .NumberInput, .rt-TextFieldInput {
     background: #47484E;
 }
@@ -50,11 +54,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .Controls {
+    display: none;
     position: absolute;
     right: 0;
     z-index: 1;
     pointer-events: none;
-    display: flex;
     flex-direction: column;
     width: 12px;
     height: 21px;
