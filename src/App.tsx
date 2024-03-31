@@ -1,11 +1,11 @@
 import '@radix-ui/themes/styles.css';
 import "./theme.css";
-
-import {Theme} from "@radix-ui/themes";
-import {Juego} from "./Juego/Juego";
+import {Game} from "./Juego/Game";
+import React from "react";
+import {GameRoot} from "./Context/GameContext";
 
 export default function () {
-    return <Theme>
-        <Juego/>
-    </Theme>
+    return <GameRoot>
+        <Game/>
+    </GameRoot>
 }
