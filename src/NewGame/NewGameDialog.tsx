@@ -6,11 +6,12 @@ import Button from "../Button/Button";
 
 interface NewGameDialogProps {
     open: boolean;
+    onOpenChange: (open: boolean) => void;
 }
 
 export function NewGameDialog(props: NewGameDialogProps) {
     const form = useNewGameDialog();
-    return <Dialog.Root open={props.open}>
+    return <Dialog.Root {...props}>
         <Dialog.Content maxWidth="300px">
             <Dialog.Title size="4">Nuevo juego</Dialog.Title>
             <Dialog.Description size="2">Seleccione un configuración para el tipo de partida.</Dialog.Description>

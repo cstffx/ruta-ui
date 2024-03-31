@@ -12,7 +12,8 @@ function useEmptyTableBody() {
             }
         },
         dialog: {
-            open
+            open,
+            onOpenChange: setOpen
         },
     }
 }
