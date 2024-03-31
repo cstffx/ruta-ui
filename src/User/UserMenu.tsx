@@ -1,8 +1,9 @@
 import React from "react";
+import type {ButtonProps} from "@radix-ui/themes";
 import {Box, Button, Flex} from "@radix-ui/themes";
 import {GameContext, useGameContext} from "../Context/GameContext";
-import {AvatarIcon, ExitIcon} from "@radix-ui/react-icons";
-import type {ButtonProps} from "@radix-ui/themes";
+import {AvatarIcon, ExitIcon, ReloadIcon} from "@radix-ui/react-icons";
+import {postServerReset} from "../API/postServerReset";
 
 function useUserMenu() {
     const context = useGameContext() as GameContext;
@@ -17,7 +18,17 @@ function useUserMenu() {
             onClick: () => {
                 context.logout()
             }
-        } as ButtonProps
+        } as ButtonProps,
+        reload: {
+            title: "Resetear servidor",
+            variant: "surface",
+            color: "red",
+            onClick: async () => {
+                await postServerReset();
+                await context.logout();
+            }
+        } as ButtonProps,
+
     }
 }
 
@@ -32,6 +43,9 @@ export function UserMenu() {
             </Button>
             <Button {...form.exit}>
                 <ExitIcon/>
+            </Button>
+            <Button {...form.reload}>
+                <ReloadIcon/>
             </Button>
         </Flex>
     </Box>

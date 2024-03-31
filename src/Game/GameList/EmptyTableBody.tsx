@@ -1,13 +1,12 @@
 import React from "react";
-import {Box, Button, Card, Flex, Heading, Link, Text} from "@radix-ui/themes";
-import {CrumpledPaperIcon} from "@radix-ui/react-icons";
+import {Box, Button, Card, Flex, Heading, Text} from "@radix-ui/themes";
+import {CrumpledPaperIcon, PlayIcon} from "@radix-ui/react-icons";
 
 /**
  * @constructor
  */
 export function EmptyTableBody() {
-    return <Flex>
-        <Card size="2">
+    return <Card size="2">
             <Flex direction="column" align="center" py="2">
                 <Box mb="2">
                     <CrumpledPaperIcon width="24" height="24" />
@@ -16,22 +15,14 @@ export function EmptyTableBody() {
                     No hay juegos disponibles
                 </Heading>
                 <Text size="2" color="gray" mb="4">
-                    Pero puede ser el primero en crear uno.
-                    <Link
-                        href="#"
-                        underline="hover"
-                        onClick={(e) => e.preventDefault()}
-                    >
-                        archive
-                    </Link>
-                    .
+                    Pero puedes ser el primer chofer en crear uno.
                 </Text>
                 <Flex>
                     <Button variant="solid" highContrast>
+                        <PlayIcon/>
                         Crear un juego
                     </Button>
                 </Flex>
             </Flex>
         </Card>
-    </Flex>
 }
