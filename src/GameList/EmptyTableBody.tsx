@@ -1,7 +1,7 @@
 import React from "react";
 import {Box, Button, Card, Flex, Heading, Text} from "@radix-ui/themes";
 import {CrumpledPaperIcon, PlayIcon} from "@radix-ui/react-icons";
-import {NewGameDialog} from "../../NewGame/NewGameDialog";
+import {NewGameDialog} from "../NewGame/NewGameDialog";
 
 function useEmptyTableBody() {
     const [open, setOpen] = React.useState(false);
