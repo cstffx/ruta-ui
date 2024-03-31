@@ -3,10 +3,11 @@ import {Box, Card, Flex, Heading, Text, TextField} from "@radix-ui/themes";
 import {useLogin} from "./useLogin";
 import Button from "../Button/Button";
 import {RocketIcon} from "@radix-ui/react-icons";
+import {CenterScreen} from "../Juego/CenterScreen";
 
 export function LoginScreen() {
     const form = useLogin();
-    return <Flex justify="center" align="center" height="100dvh">
+    return <CenterScreen>
         <Box maxWidth="350px">
             <Card size="2" className="Card" variant="surface">
                 <Flex direction="column" align="center" gap="3">
@@ -22,13 +23,13 @@ export function LoginScreen() {
                 </Flex>
                 <Flex direction="column" py="2" gap="4">
                     <Flex direction="row" justify="center" gap={"2"}>
-                        <TextField.Root size="2" autoFocus={true} placeholder="Nombre del jugador"/>
+                        <TextField.Root size="2" autoFocus={true}  {...form.username}/>
                     </Flex>
                     <Flex direction="row" align="center" justify="center" className="Footer">
-                        <Button onClick={form.submit}>Hecho</Button>
+                        <Button {...form.submit}>Hecho</Button>
                     </Flex>
                 </Flex>
             </Card>
         </Box>
-    </Flex>
+    </CenterScreen>
 }

@@ -1,18 +1,20 @@
 import Loader from "./Loader";
 import React, {Suspense} from "react";
-import {useSession} from "../Hooks/useSession";
 import {LoginScreen} from "../Login/LoginScreen";
+import {fetchSessionStatus} from "../API/fetchSessionStatus";
+import type {Session} from "../API/fetchSessionStatus";
+
+interface JuegoScreenProps {
+    sessionPromise: Promise<Session>;
+}
+
+function JuegoScreen(props: JuegoScreenProps){
+    const session = React.use<Session>(props.sessionPromise);
+    return session.anonimous ? <LoginScreen/> : "Ready to play";
+}
 
 export function Juego() {
-
-    const session = useSession();
-
-    let mainComponent;
-    if (session.isAnonimous()) {
-        mainComponent = <LoginScreen/>
-    }
-
     return <Suspense fallback={<Loader.App/>}>
-
+        <JuegoScreen sessionPromise={fetchSessionStatus()}/>
     </Suspense>
 }
