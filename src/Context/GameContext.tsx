@@ -2,14 +2,15 @@ import type {PropsWithChildren} from "react";
 import React, {Suspense} from "react";
 import {fetchSessionStatus} from "../API/fetchSessionStatus";
 import {Screen} from "./Screen";
-import {AppLoader} from "../Juego/Loader/AppLoader";
+import {AppLoader} from "../Game/Loader/AppLoader";
 import {Theme} from "@radix-ui/themes";
 
 export interface GameContext {
-
+    username: string;
+    setUsername: (username: string) => void;
 }
 
-export const GameContext = React.createContext<GameContext>({});
+export const GameContext = React.createContext<GameContext | {}>({});
 export const useGameContext = () => React.useContext(GameContext);
 
 /**
@@ -18,10 +19,14 @@ export const useGameContext = () => React.useContext(GameContext);
  * @constructor
  */
 export const GameRoot = (props: PropsWithChildren) => {
-    return <GameContext.Provider value={{}}>
+    const [username, setUsername] = React.useState("");
+    return <GameContext.Provider value={{
+        username,
+        setUsername
+    }}>
         <Theme>
             <Suspense fallback={<AppLoader/>}>
-                <Screen sessionPromise={fetchSessionStatus()}>
+                <Screen sessionPromise={fetchSessionStatus(setUsername)}>
                     {props.children}
                 </Screen>
             </Suspense>

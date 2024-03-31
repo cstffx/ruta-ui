@@ -1,6 +1,6 @@
 import '@radix-ui/themes/styles.css';
 import "./theme.css";
-import {Game} from "./Juego/Game";
+import {Game} from "./Game/Game";
 import React from "react";
 import {GameRoot} from "./Context/GameContext";
 

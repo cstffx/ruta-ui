@@ -3,7 +3,7 @@ import {Box, Card, Flex, Heading, Text, TextField} from "@radix-ui/themes";
 import {useLogin} from "./useLogin";
 import Button from "../Button/Button";
 import {RocketIcon} from "@radix-ui/react-icons";
-import {CenterScreen} from "../Juego/CenterScreen";
+import {CenterScreen} from "../Game/CenterScreen";
 
 export function LoginScreen() {
     const form = useLogin();
