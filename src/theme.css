@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 :root, .light, .light-theme {
     --blue-1: #fdfdfe;
     --blue-2: #f7f9ff;

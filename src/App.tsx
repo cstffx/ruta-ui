@@ -2,10 +2,10 @@ import '@radix-ui/themes/styles.css';
 import "./theme.css";
 
 import {Theme} from "@radix-ui/themes";
-import {LoginCard} from "./Login/LoginCard";
+import {Juego} from "./Juego/Juego";
 
 export default function () {
     return <Theme>
-        <LoginCard/>
+        <Juego/>
     </Theme>
 }
