@@ -19,6 +19,7 @@ function useEmptyTableBody() {
 }
 
 /**
+ * Mostrado para indicar que una tabla se encuentra vacía
  * @constructor
  */
 export function EmptyTableBody() {

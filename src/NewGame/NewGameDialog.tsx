@@ -1,8 +1,7 @@
 import React from 'react';
 import {useNewGameDialog} from "./useNewGameDialog";
-import {Text, Box, Dialog, Flex, Grid} from "@radix-ui/themes";
+import {Text, Box, Dialog, Flex, Grid, Button} from "@radix-ui/themes";
 import {ToggleButtons} from "../ToogleButton/ToogleButton";
-import Button from "../Button/Button";
 
 interface NewGameDialogProps {
     open: boolean;
