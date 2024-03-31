@@ -28,7 +28,6 @@ function useUserMenu() {
                 await context.logout();
             }
         } as ButtonProps,
-
     }
 }
 

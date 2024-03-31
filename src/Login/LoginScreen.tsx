@@ -23,7 +23,7 @@ export function LoginScreen() {
                 </Flex>
                 <Flex direction="column" py="2" gap="4">
                     <Flex direction="row" justify="center" gap={"2"}>
-                        <TextField.Root size="2" autoFocus={true}  {...form.username}/>
+                        <TextField.Root size="2" {...form.username}/>
                     </Flex>
                     <Flex direction="row" align="center" justify="center" className="Footer">
                         <Button {...form.submit}>Hecho</Button>
