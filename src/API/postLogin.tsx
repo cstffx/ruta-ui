@@ -1,6 +1,7 @@
 import React from "react";
 
 /**
+ * Reserva un nombre de usuario.
  * @param username
  */
 export async function postLogin(username: string) {
