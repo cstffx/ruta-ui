@@ -17,11 +17,8 @@ let cache: any;
  */
 export async function fetchGameList({key}: any): Promise<GameInfo[]> {
     if (key === cacheKey) {
-
+        return cache;
     }
-    return [
-        {id: "aaa", owner: "gol"}
-    ];
     cacheKey = key;
     return fetch("ruta/api/juego")
         .then(e => e.json())
