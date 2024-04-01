@@ -2,9 +2,9 @@ import type {PropsWithChildren} from "react";
 import React, {Suspense} from "react";
 import {fetchSessionStatus} from "../API/fetchSessionStatus";
 import {Screen} from "./Screen";
-import {AppLoader} from "../Game/Loader/AppLoader";
 import {Theme} from "@radix-ui/themes";
 import {postLogout} from "../API/postLogout";
+import {AppLoader} from "../Loader/AppLoader";
 
 export interface GameContext {
     username: string;
