@@ -1,5 +1,5 @@
 import React from "react";
-import stdlib from "../../stdlib";
+import stdlib from "../stdlib";
 
 const MESSAGES = [
     "Revisando llantas.",

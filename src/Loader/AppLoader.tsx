@@ -1,7 +1,7 @@
 import React from "react";
 import {useRandomMessage} from "./useRandomMessage";
-import {CenterScreen} from "../CenterScreen";
 import {Loader} from "./Loader";
+import {CenterScreen} from "../Game/CenterScreen";
 
 /**
  * Muestra un mensaje indicando la carga de datos.
