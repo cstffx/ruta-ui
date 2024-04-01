@@ -36,9 +36,9 @@ export function useNewGameDialog(props: any): any {
                     props.onOpenChange(false);
                     props.onCreate();
                 } catch (e) {
-                    // TODO: Informar errores.
-                    console.log(e);
+                    // TODO: Informar error.
                     props.onCreate();
+                    props.onOpenChange(false);
                 } finally {
                     setPendding(false);
                 }

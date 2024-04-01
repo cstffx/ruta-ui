@@ -3,15 +3,12 @@ import React from "react";
 /**
  * Solicita al servidor que se reinicie.
  */
-export async function postJoin(juegoId: string) {
-    fetch("ruta/api/juego/join", {
+export async function postJoin(juegoId: string, equipoId: number) {
+    fetch(`ruta/api/juego/join/${juegoId}/0`, {
         method: "POST",
         headers: {
             "accept": "application/json",
             "content-type": "application/json",
-        },
-        body: JSON.stringify({
-            juegoId
-        })
+        }
     }).then(e => e.json());
 }
