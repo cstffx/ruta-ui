@@ -35,7 +35,7 @@ const useGameTable = (props: any) => {
         joinButton: {
             onClick: async (e: any) => {
                 const id = e.target.getAttribute("data-id");
-                const result = await postJoin(id);
+                const result = await postJoin(id, 0);
             }
         },
         newButton: {

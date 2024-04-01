@@ -4,7 +4,7 @@ import React from "react";
  * Solicita al servidor que se reinicie.
  */
 export async function postJoin(juegoId: string, equipoId: number) {
-    fetch(`ruta/api/juego/join/${juegoId}/0`, {
+    fetch(`ruta/api/juego/join/${juegoId}/${equipoId}`, {
         method: "POST",
         headers: {
             "accept": "application/json",
