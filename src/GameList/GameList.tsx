@@ -3,7 +3,7 @@ import {Button, Flex, Table, Text} from "@radix-ui/themes";
 import {EmptyTableBody} from "./EmptyTableBody";
 import type {GameInfo} from "../API/fetchGameList";
 import {fetchGameList} from "../API/fetchGameList";
-import {PlayIcon, PlusIcon} from "@radix-ui/react-icons";
+import {PlusIcon} from "@radix-ui/react-icons";
 import {GameListLoader} from "./GameListLoader";
 
 import "./GameTable.css"
@@ -11,6 +11,8 @@ import {GameSpace} from "./GameSpace";
 import {GameMode} from "./GameMode";
 import {NewGameDialog} from "../NewGame/NewGameDialog";
 import {useNewGameDialog} from "../NewGame/useNewGameDialog";
+import {JoinButton} from "./JoinButton";
+import {postJoin} from "../API/postJoin";
 
 interface GameTableProps {
     fetchItems: any
@@ -23,6 +25,12 @@ function Cell({children}: any) {
 const useGameTable = () => {
     const [open, setOpen] = React.useState(false);
     return {
+        joinButton: {
+            onClick: async (e: any) => {
+                const id = e.target.getAttribute("data-id");
+                await postJoin(id);
+            }
+        },
         newButton: {
             onClick: () => {
                 setOpen(true);
@@ -73,11 +81,11 @@ export function GameTable(props: GameTableProps) {
                         .map(item => <Table.Row>
                             <Cell><GameMode>{item.modo}</GameMode></Cell>
                             <Cell>
-                                <GameSpace value={item.jugadores} max={item.jugadoresMaximos}></GameSpace>
+                                <GameSpace item={item}></GameSpace>
                             </Cell>
                             <Cell>{item.owner}</Cell>
                             <Cell>
-                                <Button size="1"><PlayIcon/>Unirse</Button>
+                                <JoinButton item={item} form={form}/>
                             </Cell>
                         </Table.Row>)}
                 </Table.Body>

@@ -1,6 +1,7 @@
 import React from "react";
 
 export interface GameInfo {
+    id: string;
     owner: string;
     iniciado: boolean;
     jugadores: number;
@@ -13,11 +14,7 @@ export interface GameInfo {
  */
 export async function fetchGameList():Promise<GameInfo[]> {
     return [
-        {iniciado: false, modo: "Individual", jugadoresMaximos: 6, jugadores: 4, owner: "User"},
-        {iniciado: false, modo: "Individual", jugadoresMaximos: 6, jugadores: 4, owner: "User"},
-        {iniciado: false, modo: "Individual", jugadoresMaximos: 6, jugadores: 4, owner: "User"},
-        {iniciado: false, modo: "Individual", jugadoresMaximos: 6, jugadores: 4, owner: "User"},
-        {iniciado: false, modo: "Por Equipos", jugadoresMaximos: 6, jugadores: 4, owner: "User"},
+        {id: "some_id", iniciado: false, modo: "Individual", jugadoresMaximos: 6, jugadores: 4, owner: "User"},
     ]
     // return fetch("ruta/api/juego").then(e => e.json());
 }
