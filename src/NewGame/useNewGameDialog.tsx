@@ -1,10 +1,15 @@
 import React from "react";
 import type {ToggleButtonsProps} from "../ToogleButton/ToogleButton";
 
-export function useNewGameDialog() {
+export function useNewGameDialog(): any {
+    const [open, setOpen] = React.useState(false);
     const [modo, setModo] = React.useState("Individual");
     const [cantidad, setCantidad] = React.useState("2");
     return {
+        dialog: {
+           open,
+           setOpen
+        },
         modo: {
             type: "single",
             values: ['Individual', 'Por equipo'],

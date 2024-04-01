@@ -1,8 +1,9 @@
 import React from "react";
 import {UserMenu} from "../User/UserMenu";
 import {GameContext, useGameContext} from "../Context/GameContext";
-import {GameList} from "./GameList/GameList";
+
 import {Flex} from "@radix-ui/themes";
+import {GameList} from "../GameList/GameList";
 
 export function Game() {
     const context = useGameContext() as GameContext;
