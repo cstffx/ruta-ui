@@ -6,7 +6,6 @@ import {fetchGameList} from "../API/fetchGameList";
 import {PlusIcon} from "@radix-ui/react-icons";
 import {GameListLoader} from "./GameListLoader";
 
-import "./GameTable.css"
 import {GameSpace} from "./GameSpace";
 import {GameMode} from "./GameMode";
 import {NewGameDialog} from "../NewGame/NewGameDialog";

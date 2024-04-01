@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNewGameDialog} from "./useNewGameDialog";
-import {Text, Box, Dialog, Flex, Grid, Button} from "@radix-ui/themes";
 import {ToggleButtons} from "../ToogleButton/ToogleButton";
+import {Text, Box, Dialog, Flex, Grid, Button} from "@radix-ui/themes";
 
 interface NewGameDialogProps {
     open: boolean;
@@ -13,8 +13,8 @@ export function NewGameDialog(props: NewGameDialogProps) {
     return <Dialog.Root {...props}>
         <Dialog.Content maxWidth="300px">
             <Dialog.Title size="4">Nuevo juego</Dialog.Title>
-            <Dialog.Description size="2">Seleccione un configuración para el tipo de partida.</Dialog.Description>
-            <Flex direction="column" gap="20px" py="3">
+            <Dialog.Description size="2">Seleccione una configuración para el tipo de partida.</Dialog.Description>
+            <Flex direction="column" gap="2" pt="4">
                 <Box>
                     <Text as="div" size="2" weight="bold" mb="2">
                         Modo de juego

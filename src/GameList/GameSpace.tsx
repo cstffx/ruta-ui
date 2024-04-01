@@ -1,8 +1,6 @@
 import React from "react";
 import {Progress, Text} from "@radix-ui/themes";
 
-import "./GameTable.css"
-
 export function GameSpace({item}: any) {
     const value = item.jugadores;
     const max = item.jugadoresMaximos;

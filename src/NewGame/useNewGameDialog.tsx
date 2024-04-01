@@ -24,6 +24,7 @@ export function useNewGameDialog(): any {
         } as ToggleButtonsProps,
         submit: {
             onClick: async () => {
+
             }
         }
     }

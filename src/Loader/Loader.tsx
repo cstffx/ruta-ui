@@ -6,12 +6,12 @@ import {BookmarkIcon} from "@radix-ui/react-icons";
  * Muestra un mensaje indicando la carga de datos.
  * @constructor
  */
-export function Loader({childrens}: any) {
+export function Loader({children}: any) {
     return <Button disabled>
         <Spinner loading>
             <BookmarkIcon/>
         </Spinner>
-        {childrens}
+        {children}
     </Button>
 
 }

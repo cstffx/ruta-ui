@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./GameTable.css"
 import {ComponentBooleanIcon, ComponentInstanceIcon} from "@radix-ui/react-icons";
 import {Flex} from "@radix-ui/themes";
 
