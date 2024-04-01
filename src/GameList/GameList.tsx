@@ -3,7 +3,7 @@ import {Button, Flex, Table, Text} from "@radix-ui/themes";
 import {EmptyTableBody} from "./EmptyTableBody";
 import type {GameInfo} from "../API/fetchGameList";
 import {fetchGameList} from "../API/fetchGameList";
-import {PlusIcon} from "@radix-ui/react-icons";
+import {PlusIcon, ReloadIcon} from "@radix-ui/react-icons";
 import {GameListLoader} from "./GameListLoader";
 
 import {GameSpace} from "./GameSpace";
@@ -14,7 +14,8 @@ import {JoinButton} from "./JoinButton";
 import {postJoin} from "../API/postJoin";
 
 interface GameTableProps {
-    fetchItems: any
+    fetchItems: any;
+    onReload?: () => void;
 }
 
 function Cell({children}: any) {
@@ -64,9 +65,12 @@ export function GameTable(props: GameTableProps) {
                         Únase a un juego existente o cree uno nuevo
                     </Text>
                 </Flex>
-                <Button color="green" {...form.newButton}>
-                    <PlusIcon/>Nuevo
-                </Button>
+                <Flex direction="row" gap="2">
+                    <Button color="green" {...form.newButton}>
+                        <PlusIcon/>Nuevo
+                    </Button>
+                    <Button variant="outline" onClick={props.onReload}><ReloadIcon/></Button>
+                </Flex>
             </Flex>
             <Table.Root variant="surface" size="1" className={"GameTable"}>
                 <Table.Header>
@@ -101,7 +105,13 @@ export function GameTable(props: GameTableProps) {
  */
 export function GameList() {
     const [key, setKey] = React.useState(0);
+
+    function onReload(){
+        setKey( key => key + 1);
+    }
+
     return <Suspense fallback={<GameListLoader/>}>
-        <GameTable fetchItems={fetchGameList({key})}/>
+        <GameTable fetchItems={fetchGameList({key})}
+                   onReload={onReload}/>
     </Suspense>
 }
