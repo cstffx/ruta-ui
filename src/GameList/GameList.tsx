@@ -50,6 +50,7 @@ export function GameTable(props: GameTableProps) {
 
     const items = (React.use(props.fetchItems) as GameInfo[])
         .filter(item => !item.iniciado);
+
     if (!items.length) {
         return <EmptyTableBody/>
     } else {
@@ -99,7 +100,8 @@ export function GameTable(props: GameTableProps) {
  * @constructor
  */
 export function GameList() {
+    const [key, setKey] = React.useState(0);
     return <Suspense fallback={<GameListLoader/>}>
-        <GameTable fetchItems={fetchGameList()}/>
+        <GameTable fetchItems={fetchGameList({key})}/>
     </Suspense>
 }

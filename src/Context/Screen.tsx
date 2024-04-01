@@ -4,7 +4,7 @@ import type {PropsWithChildren} from "react";
 import {LoginScreen} from "../Login/LoginScreen";
 
 export interface JuegoScreenProps extends PropsWithChildren {
-    sessionPromise: Promise<Session>;
+    sessionPromise: any
 }
 
 /**
@@ -14,6 +14,6 @@ export interface JuegoScreenProps extends PropsWithChildren {
  * @constructor
  */
 export function Screen(props: JuegoScreenProps) {
-    const session = React.use<Session>(props.sessionPromise);
-    return session.anonimous ? <LoginScreen/> : props.children;
+    let username = React.use<Session>(props.sessionPromise).username;
+    return !username ? <LoginScreen/> : props.children;
 }

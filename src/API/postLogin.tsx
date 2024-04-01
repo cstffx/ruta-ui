@@ -4,8 +4,8 @@ import React from "react";
  * Reserva un nombre de usuario.
  * @param username
  */
-export async function postLogin(username: string) {
-    fetch("ruta/api/jugador/login", {
+export async function postLogin(username: string): Promise<any> {
+    return fetch("ruta/api/jugador/login", {
         method: "POST",
         headers: {
             "accept": "application/json",
@@ -14,5 +14,7 @@ export async function postLogin(username: string) {
         body: JSON.stringify({
             username
         })
+    }).catch(e => {
+        throw e
     }).then(e => e.json());
 }

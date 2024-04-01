@@ -1,5 +1,4 @@
 import React from "react";
-import {postLogin} from "../API/postLogin";
 import {GameContext, useGameContext} from "../Context/GameContext";
 
 export function useLogin() {
@@ -15,10 +14,7 @@ export function useLogin() {
             },
         },
         submit: {
-            onClick: async () => {
-                await postLogin(username);
-                context.setUsername(username);
-            }
+            onClick: () => context.login(username)
         }
     }
 }

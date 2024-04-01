@@ -9,9 +9,20 @@ export interface GameInfo {
     jugadoresMaximos: number;
 }
 
+let cacheKey: any = null;
+let cache: any;
+
 /**
  * Resuelve el listado de juegos disponibles.
  */
-export async function fetchGameList():Promise<GameInfo[]> {
-    return fetch("ruta/api/juego").then(e => e.json());
+export async function fetchGameList({key}: any): Promise<GameInfo[]> {
+    if (key === cacheKey) {
+        return cache;
+    }
+    cacheKey = key;
+    return fetch("ruta/api/juego")
+        .then(e => e.json())
+        .then(items => {
+            return cache = items;
+        });
 }

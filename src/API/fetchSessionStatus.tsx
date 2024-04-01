@@ -2,24 +2,25 @@ import React from "react";
 
 export interface Session {
     username?: string;
-    anonimous?: boolean;
-    invalidated?: boolean;
+    anonimous?: true;
 }
 
-let session: Session = {invalidated: true};
+let cacheKey:any = null;
+let cache: any;
 
 /**
  * Resuelve el estado actual de la sesion del jugador.
- * @param onUsernameChange Callback llamadocon el nombre de usuario actual, si alguno.
  */
-export async function fetchSessionStatus(onUsernameChange: (username: string) => void) {
-    if (session.invalidated) {
-        return fetch("ruta/api/jugador/status")
-            .then(e => e.json())
-            .then(e => {
-                onUsernameChange(e.username);
-                return e;
-            });
+export async function fetchSessionStatus({key, fn} : {key:any, fn:any}) {
+    if(key === cacheKey){
+        return cache;
     }
-    return session;
+    cacheKey = key;
+    return fetch("ruta/api/jugador/status")
+        .then(e => e.json())
+        .then(token => {
+            cache = token;
+            fn(token);
+            return token;
+        });
 }
