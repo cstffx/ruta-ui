@@ -1,31 +1,48 @@
 import React from "react";
 import type {ToggleButtonsProps} from "../ToogleButton/ToogleButton";
+import {postNewGame} from "../API/postNewGame";
+import type {ButtonProps} from "@radix-ui/themes";
 
-export function useNewGameDialog(): any {
-    const [open, setOpen] = React.useState(false);
-    const [modo, setModo] = React.useState("Individual");
-    const [cantidad, setCantidad] = React.useState("2");
+type Modo = "Individual" | "Equipo";
+
+export function useNewGameDialog(props: any): any {
+
+    const [modo, setModo] = React.useState<Modo>("Individual");
+    const [jugadores, setJugadores] = React.useState("2");
+    const [pendding, setPendding] = React.useState(false);
+
     return {
-        dialog: {
-           open,
-           setOpen
-        },
         modo: {
             type: "single",
-            values: ['Individual', 'Por equipo'],
+            values: ['Individual', 'Equipo'] as Modo[],
             value: modo,
-            onValueChange: (value: string) => setModo(value)
+            onValueChange: (value: Modo) => setModo(value)
         } as ToggleButtonsProps,
         cantidad: {
             type: "single",
             values: ['2', '4', '6'],
-            value: cantidad,
-            onValueChange: (value) => setCantidad(value)
+            value: jugadores,
+            onValueChange: (value) => setJugadores(value)
         } as ToggleButtonsProps,
         submit: {
+            loading: pendding,
             onClick: async () => {
-
+                setPendding(true);
+                try {
+                    await postNewGame({
+                        jugadores: parseInt(jugadores),
+                        modo
+                    });
+                    props.onOpenChange(false);
+                    props.onCreate();
+                } catch (e) {
+                    // TODO: Informar errores.
+                    console.log(e);
+                    props.onCreate();
+                } finally {
+                    setPendding(false);
+                }
             }
-        }
+        } as ButtonProps
     }
 }

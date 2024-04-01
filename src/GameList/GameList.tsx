@@ -9,7 +9,6 @@ import {GameListLoader} from "./GameListLoader";
 import {GameSpace} from "./GameSpace";
 import {GameMode} from "./GameMode";
 import {NewGameDialog} from "../NewGame/NewGameDialog";
-import {useNewGameDialog} from "../NewGame/useNewGameDialog";
 import {JoinButton} from "./JoinButton";
 import {postJoin} from "../API/postJoin";
 
@@ -22,23 +21,32 @@ function Cell({children}: any) {
     return <Table.Cell valign="middle">{children}</Table.Cell>
 }
 
-const useGameTable = () => {
+const useGameTable = (props: any) => {
     const [open, setOpen] = React.useState(false);
+
+    const dialogTrigger = () => {
+        setOpen(true);
+    }
+
     return {
+        empty: {
+            onNew: dialogTrigger,
+        },
         joinButton: {
             onClick: async (e: any) => {
                 const id = e.target.getAttribute("data-id");
                 const result = await postJoin(id);
-                console.log(result)
             }
         },
         newButton: {
-            onClick: () => {
-                setOpen(true);
-            }
+            onClick: dialogTrigger
         },
         dialog: {
             open,
+            onCreate: () => {
+                console.log("on Create");
+                props.onReload();
+            },
             onOpenChange: setOpen
         },
     }
@@ -46,14 +54,15 @@ const useGameTable = () => {
 
 export function GameTable(props: GameTableProps) {
 
-    const form = useGameTable();
-    const dialog = useNewGameDialog();
-
+    const form = useGameTable(props);
     const items = (React.use(props.fetchItems) as GameInfo[])
         .filter(item => !item.iniciado);
 
     if (!items.length) {
-        return <EmptyTableBody/>
+        return <>
+            <EmptyTableBody {...form.empty}/>
+            <NewGameDialog {...form.dialog}/>
+        </>
     } else {
         return <Flex direction="column" gap="2">
             <Flex justify="between" align="center" gap="6">
@@ -83,7 +92,7 @@ export function GameTable(props: GameTableProps) {
                 </Table.Header>
                 <Table.Body>
                     {items.filter(item => !item.iniciado)
-                        .map(item => <Table.Row>
+                        .map(item => <Table.Row key={item.id}>
                             <Cell><GameMode>{item.modo}</GameMode></Cell>
                             <Cell>
                                 <GameSpace item={item}></GameSpace>
@@ -95,7 +104,7 @@ export function GameTable(props: GameTableProps) {
                         </Table.Row>)}
                 </Table.Body>
             </Table.Root>
-            <NewGameDialog {...form.dialog} {...dialog}/>
+            <NewGameDialog {...form.dialog}/>
         </Flex>
     }
 }
@@ -106,12 +115,11 @@ export function GameTable(props: GameTableProps) {
 export function GameList() {
     const [key, setKey] = React.useState(0);
 
-    function onReload(){
-        setKey( key => key + 1);
+    function onReload() {
+        setKey(key => key + 1);
     }
 
     return <Suspense fallback={<GameListLoader/>}>
-        <GameTable fetchItems={fetchGameList({key})}
-                   onReload={onReload}/>
+        <GameTable fetchItems={fetchGameList({key})} onReload={onReload}/>
     </Suspense>
 }

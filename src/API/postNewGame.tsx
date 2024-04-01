@@ -1,19 +1,25 @@
 import React from "react";
 
 interface GameConfig {
-    mode: "Individual" | "PorEquipos",
-    size: number
+    modo: "Individual" | "Equipo",
+    jugadores: number
 }
 
 /**
  * Solicita al servidor que se reinicie.
  */
-export async function postServerReset() {
-    fetch("ruta/api/juego/create", {
+export async function postNewGame(config: GameConfig) {
+    return fetch("ruta/api/juego", {
         method: "POST",
         headers: {
             "accept": "application/json",
             "content-type": "application/json",
+        },
+        body: JSON.stringify(config)
+    }).then(e => {
+        if(e.status == 200){
+            return e.json()
         }
-    }).then(e => e.json());
+        return {error: true, status: e.status};
+    });
 }

@@ -3,13 +3,16 @@ import {useNewGameDialog} from "./useNewGameDialog";
 import {ToggleButtons} from "../ToogleButton/ToogleButton";
 import {Text, Box, Dialog, Flex, Grid, Button} from "@radix-ui/themes";
 
-interface NewGameDialogProps {
+export interface NewGameDialogProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
+    onCreate: () => void;
 }
 
 export function NewGameDialog(props: NewGameDialogProps) {
-    const form = useNewGameDialog();
+
+    const form = useNewGameDialog(props);
+
     return <Dialog.Root {...props}>
         <Dialog.Content maxWidth="300px">
             <Dialog.Title size="4">Nuevo juego</Dialog.Title>

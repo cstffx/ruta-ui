@@ -17,9 +17,11 @@ let cache: any;
  */
 export async function fetchGameList({key}: any): Promise<GameInfo[]> {
     if (key === cacheKey) {
+
         return cache;
     }
     cacheKey = key;
+    console.log(key)
     return fetch("ruta/api/juego")
         .then(e => e.json())
         .then(items => {
