@@ -13,8 +13,5 @@ export interface GameInfo {
  * Resuelve el listado de juegos disponibles.
  */
 export async function fetchGameList():Promise<GameInfo[]> {
-    return [
-        {id: "some_id", iniciado: false, modo: "Individual", jugadoresMaximos: 6, jugadores: 4, owner: "User"},
-    ]
-    // return fetch("ruta/api/juego").then(e => e.json());
+    return fetch("ruta/api/juego").then(e => e.json());
 }

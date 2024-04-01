@@ -28,7 +28,8 @@ const useGameTable = () => {
         joinButton: {
             onClick: async (e: any) => {
                 const id = e.target.getAttribute("data-id");
-                await postJoin(id);
+                const result = await postJoin(id);
+                console.log(result)
             }
         },
         newButton: {
