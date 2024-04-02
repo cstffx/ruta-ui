@@ -17,7 +17,7 @@ export function useUserMenu() {
             }
         } as ButtonProps,
         reload: {
-            title: "Resetear servidor",
+            title: "Reiniciar servidor",
             variant: "surface",
             color: "red",
             onClick: async () => {
